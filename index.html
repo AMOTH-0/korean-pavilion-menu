@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korean Pavilion - Folklorama Food Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Korean Pavilion Menu - Folklorama</title>
   
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Explore the Folklorama Korean Pavilion food menu: Bulgogi, Bibimbap, Gimbap, Japchae, Kimchi, Korean drinks, and festival combos. Optimized for mobile.">
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Authentic food & drink menu for the Folklorama Korean Pavilion. Scan, browse, and order Bulgogi, Kimchi, Gimbap, Japchae, traditional drinks, and combos.">
   <meta name="keywords" content="Folklorama, Korean Pavilion, Korean Food, Menu, Winnipeg, Bulgogi, Bibimbap, Gimbap, Kimchi, Soju, Makgeolli">
   <meta name="author" content="Korean Pavilion">
   
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://korean-pavilion.github.io/menu/">
-  <meta property="og:title" content="Folklorama Korean Pavilion Food Menu">
-  <meta property="og:description" content="Savor authentic Korean dishes, special combos, and traditional drinks at the Folklorama Korean Pavilion.">
+  <meta property="og:title" content="Korean Pavilion Food & Drinks Menu">
+  <meta property="og:description" content="Explore prices, ingredients, and combos at the Folklorama Korean Pavilion.">
   <meta property="og:image" content="assets/images/bibimbap.png">
 
-  <!-- Google Fonts: Outfit (modern sans) & Playfair Display (serif accent) -->
+  <!-- Google Fonts: Outfit (modern sans) & Playfair Display (premium serif accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons for clean mobile app buttons -->
+  <!-- FontAwesome Icons for clean, touch-friendly navigation -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Custom Stylesheet -->
@@ -30,138 +30,138 @@
 </head>
 <body>
 
-  <!-- Main Mobile viewport wrapper -->
+  <!-- Mockup Wrapper for Widescreen / Centered Main Container -->
   <div class="mobile-app-wrapper">
     
-    <!-- App Header (Reduced Banner) -->
-    <header class="app-header">
-      <div class="pattern-overlay"></div>
-      <div class="header-content">
-        <span class="logo-badge">🇰🇷 FOLKLORAMA</span>
-        <h1 class="header-title">Korean Pavilion Menu</h1>
-        <p class="header-subtitle">Authentic Food & Drinks</p>
-        <span class="header-guide">Tap a section below to browse</span>
+    <!-- Compact Top Header -->
+    <header class="app-header" id="appHeader">
+      <div class="header-pattern"></div>
+      <div class="header-logo-wrap">
+        <span class="logo-icon">🇰🇷</span>
+        <div class="header-titles">
+          <h1>Korean Pavilion Menu</h1>
+          <p class="subtitle">Folklorama Food & Drinks</p>
+        </div>
       </div>
+      <p class="order-notice">Scan, browse, and order at the pavilion.</p>
     </header>
 
-    <!-- Sticky Navigation Tabs -->
-    <nav class="app-nav-tabs" id="stickyNavTabs">
-      <a href="#food-section" class="tab-link active" data-section="food-section">
-        <i class="fa-solid fa-utensils"></i>
-        <span>Food</span>
-      </a>
-      <a href="#combos-section" class="tab-link" data-section="combos-section">
-        <i class="fa-solid fa-fire"></i>
-        <span>Combos</span>
-      </a>
-      <a href="#drinks-section" class="tab-link" data-section="drinks-section">
-        <i class="fa-solid fa-glass-water"></i>
-        <span>Drinks</span>
-      </a>
-      <a href="#ingredients-section" class="tab-link" data-section="ingredients-section">
-        <i class="fa-solid fa-leaf"></i>
-        <span>Ingredients</span>
-      </a>
+    <!-- Sticky Horizontal Category Navigation Pills -->
+    <nav class="category-pills-bar" id="categoryPillsBar">
+      <div class="pills-scroll-wrapper">
+        <a href="#popular-section" class="pill-link active" data-tab="popular">Popular</a>
+        <a href="#meals-section" class="pill-link" data-tab="meals">Meals</a>
+        <a href="#snacks-section" class="pill-link" data-tab="snacks">Snacks</a>
+        <a href="#sides-section" class="pill-link" data-tab="sides">Sides</a>
+        <a href="#combos-section" class="pill-link" data-tab="combos">Combos</a>
+        <a href="#drinks-section" class="pill-link" data-tab="drinks">Drinks</a>
+      </div>
     </nav>
 
-    <!-- Main Content Area -->
+    <!-- Main Web App Content Area -->
     <main class="app-main-content">
       
-      <!-- Food Section -->
-      <section id="food-section" class="app-section">
-        <div class="section-title-wrap">
-          <h2 class="section-title"><i class="fa-solid fa-utensils text-gold"></i> Dish Menu</h2>
-          <div class="section-divider"></div>
-        </div>
-
-        <!-- Food Chips Sub-filters -->
-        <div class="filter-chips">
-          <button class="chip active" data-filter="all" aria-pressed="true">All</button>
-          <button class="chip" data-filter="main" aria-pressed="false">Mains</button>
-          <button class="chip" data-filter="snack" aria-pressed="false">Snacks</button>
-          <button class="chip" data-filter="side" aria-pressed="false">Sides</button>
-        </div>
-
-        <!-- Food Cards List Container -->
-        <div class="food-list" id="foodListContainer">
+      <!-- Popular Picks Section (Horizontal Tray style or compact vertical) -->
+      <section id="popular-section" class="menu-section">
+        <h2 class="section-title"><i class="fa-solid fa-star text-gold"></i> Popular Picks</h2>
+        <div class="section-divider"></div>
+        <div class="popular-grid" id="popularGrid">
           <!-- Rendered dynamically by script.js -->
-          <noscript>
-            <div class="noscript-warning">
-              Please enable JavaScript to view the menu, or check below for dishes.
-            </div>
-          </noscript>
+        </div>
+      </section>
+
+      <!-- Meals Section -->
+      <section id="meals-section" class="menu-section">
+        <h2 class="section-title"><i class="fa-solid fa-bowl-rice text-gold"></i> Meals</h2>
+        <div class="section-divider"></div>
+        <div class="food-list" id="mealsList">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </section>
+
+      <!-- Snacks Section -->
+      <section id="snacks-section" class="menu-section">
+        <h2 class="section-title"><i class="fa-solid fa-hotdog text-gold"></i> Snacks</h2>
+        <div class="section-divider"></div>
+        <div class="food-list" id="snacksList">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </section>
+
+      <!-- Sides Section -->
+      <section id="sides-section" class="menu-section">
+        <h2 class="section-title"><i class="fa-solid fa-seedling text-gold"></i> Sides</h2>
+        <div class="section-divider"></div>
+        <div class="food-list" id="sidesList">
+          <!-- Rendered dynamically by script.js -->
         </div>
       </section>
 
       <!-- Combos Section -->
-      <section id="combos-section" class="app-section highlight-section">
-        <div class="section-title-wrap">
-          <h2 class="section-title"><i class="fa-solid fa-fire text-red"></i> Festival Combos</h2>
-          <div class="section-divider"></div>
-        </div>
-        <p class="section-description">Great value combinations to sample multiple street foods.</p>
-
-        <div class="combos-list">
+      <section id="combos-section" class="menu-section highlight-section">
+        <h2 class="section-title"><i class="fa-solid fa-fire text-red"></i> Festival Combos</h2>
+        <div class="section-divider"></div>
+        <p class="combo-intro">Enjoy perfect pairings and great festival savings.</p>
+        
+        <div class="combos-grid">
           <!-- Combo 1 -->
-          <div class="combo-item-card">
-            <div class="combo-header">
-              <span class="combo-badge">Combo 1</span>
-              <span class="combo-price">$15.00</span>
+          <div class="combo-card">
+            <div class="combo-badge-row">
+              <span class="combo-label-badge">Combo 1</span>
+              <span class="combo-price-tag">$15.00</span>
             </div>
-            <h3 class="combo-name">Bulgogi & Mandoo</h3>
-            <p class="combo-details">½ order of Bulgogi Beef + 3 pcs Mandoo (Dumplings)</p>
+            <h3 class="combo-card-title">Bulgogi & Mandoo</h3>
+            <p class="combo-card-details">½ order of Bulgogi Beef + 3 pcs Mandoo (Dumplings)</p>
           </div>
 
           <!-- Combo 2 -->
-          <div class="combo-item-card">
-            <div class="combo-header">
-              <span class="combo-badge">Combo 2</span>
-              <span class="combo-price">$15.00</span>
+          <div class="combo-card">
+            <div class="combo-badge-row">
+              <span class="combo-label-badge">Combo 2</span>
+              <span class="combo-price-tag">$15.00</span>
             </div>
-            <h3 class="combo-name">Japchae & Gimbap</h3>
-            <p class="combo-details">½ order of Japchae Noodles + 5 pcs Gimbap Rolls</p>
+            <h3 class="combo-card-title">Japchae & Gimbap</h3>
+            <p class="combo-card-details">½ order of Japchae Noodles + 5 pcs Gimbap Rolls</p>
           </div>
         </div>
       </section>
 
       <!-- Drinks Section -->
-      <section id="drinks-section" class="app-section">
-        <div class="section-title-wrap">
-          <h2 class="section-title"><i class="fa-solid fa-glass-water text-gold"></i> Traditional Drinks</h2>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="drinks-list" id="drinksListContainer">
+      <section id="drinks-section" class="menu-section">
+        <h2 class="section-title"><i class="fa-solid fa-glass-water text-gold"></i> Traditional Drinks</h2>
+        <div class="section-divider"></div>
+        
+        <div class="drinks-grid" id="drinksList">
           <!-- Rendered dynamically by script.js -->
         </div>
 
-        <!-- Alcohol Disclaimer -->
-        <div class="disclaimer-card">
-          <i class="fa-solid fa-circle-exclamation disclaimer-icon"></i>
-          <p class="disclaimer-text">Alcoholic beverages available only to guests of 19+ (legal drinking age in Manitoba). Please enjoy responsibly. Photo ID required.</p>
+        <!-- Responsible Alcohol note -->
+        <div class="alcohol-disclaimer">
+          <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+          <p class="warning-text">Alcoholic beverages available only to guests of legal drinking age. Please enjoy responsibly.</p>
         </div>
       </section>
 
-      <!-- Ingredients & Allergens Section -->
-      <section id="ingredients-section" class="app-section">
-        <div class="section-title-wrap">
-          <h2 class="section-title"><i class="fa-solid fa-leaf text-gold"></i> Ingredients & Safety</h2>
-          <div class="section-divider"></div>
-        </div>
-
-        <div class="ingredients-info">
-          <div class="info-card">
-            <h3>Key Korean Seasonings</h3>
-            <p>Dishes contain sesame oil, soy sauce (gluten), garlic, green onion, and fermented red pepper paste (gochujang).</p>
+      <!-- Ingredients & Allergens Section (Collapsible guide style) -->
+      <section id="ingredients-section" class="menu-section info-section">
+        <h2 class="section-title"><i class="fa-solid fa-circle-info text-gold"></i> Ingredients & Allergens</h2>
+        <div class="section-divider"></div>
+        
+        <div class="allergen-panel">
+          <p class="panel-intro">Korean cuisine heavily incorporates sesame, soy, and gluten. Please check details below:</p>
+          
+          <div class="allergen-box">
+            <h4>Common Seasonings</h4>
+            <p>Dishes utilize soy sauce (gluten/soy), sesame oil/seeds, garlic, green onions, and red pepper paste (gochujang).</p>
           </div>
 
-          <div class="allergen-card">
-            <h3>Allergen Quick Guide</h3>
-            <ul class="allergen-list">
-              <li><strong>Gluten / Soy:</strong> In Bulgogi, Gangjeong, Japchae, Gimbap, Bibimbap, Mandoo, and Tteok-ko-chi.</li>
-              <li><strong>Sesame (oil/seeds):</strong> Used in Bulgogi, Gimbap, Japchae, Bibimbap, Mandoo, and Tteok-ko-chi.</li>
-              <li><strong>Fish Sauce:</strong> Present in Kimchi.</li>
-              <li><strong>Egg:</strong> In Gimbap and optional on Bibimbap.</li>
+          <div class="allergen-box alert">
+            <h4>Allergen Summary</h4>
+            <ul>
+              <li><strong>Soy / Gluten:</strong> Present in Bulgogi, Gangjeong, Japchae, Gimbap, Bibimbap, Mandoo, and Tteok-ko-chi.</li>
+              <li><strong>Sesame:</strong> Present in Bulgogi, Gimbap, Japchae, Bibimbap, Mandoo, and Tteok-ko-chi.</li>
+              <li><strong>Fish Sauce:</strong> In Kimchi.</li>
+              <li><strong>Egg:</strong> In Gimbap (and optional on Bibimbap).</li>
             </ul>
           </div>
         </div>
@@ -169,16 +169,31 @@
 
     </main>
 
-    <!-- Compact App Footer -->
+    <!-- Simple Mobile App Footer -->
     <footer class="app-footer">
       <p>© 2026 Korean Pavilion. Items & prices subject to availability.</p>
       <p class="credits">Built for Folklorama Korean Pavilion.</p>
     </footer>
 
-    <!-- Back to Top Floating Button -->
-    <button id="backToTopBtn" class="app-back-to-top" aria-label="Scroll back to top">
-      <i class="fa-solid fa-chevron-up"></i>
-    </button>
+    <!-- Floating Bottom Navigation Bar (App-style) -->
+    <nav class="app-bottom-bar" id="appBottomBar">
+      <a href="#meals-section" class="bottom-nav-item">
+        <i class="fa-solid fa-bowl-rice"></i>
+        <span>Menu</span>
+      </a>
+      <a href="#combos-section" class="bottom-nav-item">
+        <i class="fa-solid fa-fire"></i>
+        <span>Combos</span>
+      </a>
+      <a href="#drinks-section" class="bottom-nav-item">
+        <i class="fa-solid fa-glass-water"></i>
+        <span>Drinks</span>
+      </a>
+      <a href="#" class="bottom-nav-item" id="bottomNavTop">
+        <i class="fa-solid fa-chevron-up"></i>
+        <span>Top</span>
+      </a>
+    </nav>
 
   </div>
 

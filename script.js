@@ -1,94 +1,102 @@
 /**
- * Folklorama Korean Pavilion - Mobile Web App Menu
- * Highly optimized for touch targets, scanning speed, and lightweight performance.
+ * Folklorama Korean Pavilion - Mobile QR-Code Menu App
+ * Optimized for one-hand scrolling, visual clarity under festival lighting, and fast loading.
  */
 
 // ==========================================================================
-// MENU DATA
+// FOOD & DRINKS DATABASE
 // ==========================================================================
 
 const foodItems = [
   {
-    id: "chicken-gangjeong",
-    name: "Chicken Gangjeong",
-    price: 20.00,
-    category: "main",
-    ingredients: "Chicken, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
-    tag: "Popular",
-    isSpicy: true,
-    image: "assets/images/chicken_gangjeong.png"
-  },
-  {
     id: "bulgogi",
     name: "Bulgogi",
     price: 20.00,
-    category: "main",
+    category: "meals",
+    shortDesc: "Sweet & savory thin-sliced marinated beef.",
     ingredients: "Beef, Yellow Onion, Carrot, Green Onion, Sesame Oil, Salt, Garlic Powder, Soy Sauce, Sugar, Black Pepper",
     tag: "Signature",
-    isSpicy: false,
+    isPopular: true,
     image: "assets/images/bulgogi.png"
+  },
+  {
+    id: "chicken-gangjeong",
+    name: "Chicken Gangjeong",
+    price: 20.00,
+    category: "meals",
+    shortDesc: "Crispy sweet & spicy glaze fried chicken.",
+    ingredients: "Chicken, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
+    tag: "Best Seller",
+    isPopular: true,
+    image: "assets/images/chicken_gangjeong.png"
+  },
+  {
+    id: "bibimbap",
+    name: "Bibimbap (Vegetable)",
+    price: 18.00,
+    extraPrice: "Beef option: $20.00",
+    category: "meals",
+    shortDesc: "Rice bowl with assorted seasoned vegetables & egg.",
+    ingredients: "Rice, Carrot, Spinach, Mushroom, Hot Pepper Sauce, Sesame Oil, Garlic Powder, Salt, Soy Sauce, Sugar, Black Pepper",
+    tag: "Healthy",
+    isPopular: true,
+    image: "assets/images/bibimbap.png"
   },
   {
     id: "gimbap",
     name: "Gimbap",
     price: 10.00,
-    category: "snack",
+    category: "snacks",
+    shortDesc: "Sesame rice and vegetable seaweed roll.",
     ingredients: "Rice, Seaweed, Carrots, Cucumber, Pickled Radish, Sesame Oil, Salt, Soy Sauce, Sugar or Syrup, Vinegar, Egg",
     tag: "Classic",
-    isSpicy: false,
+    isPopular: true,
     image: "assets/images/gimbap.png"
   },
   {
     id: "japchae",
     name: "Japchae",
     price: 10.00,
-    category: "snack",
+    category: "snacks",
+    shortDesc: "Stir-fried sweet potato glass noodles.",
     ingredients: "Sweet Potato Noodle, Carrots, Mushrooms, Spinach, Sesame Oil, Salt, Garlic Powder, Soy Sauce, Sugar, Black Pepper",
     tag: "Noodles",
-    isSpicy: false,
+    isPopular: false,
     image: "assets/images/japchae.png"
-  },
-  {
-    id: "kimchi",
-    name: "Kimchi (500g)",
-    price: 7.99,
-    extraPrice: "1kg size: $12.99",
-    category: "side",
-    ingredients: "Napa Cabbage, Green Onion, Onion, Sugar, Salt, Chili Powder, Garlic Powder, Fish Sauce",
-    tag: "Fermented",
-    isSpicy: true,
-    image: "assets/images/kimchi.png"
   },
   {
     id: "tteokkochi",
     name: "Tteok-ko-chi",
     price: 6.00,
-    category: "snack",
+    category: "snacks",
+    shortDesc: "Fried skewered rice cakes with sweet chili sauce.",
     ingredients: "Rice Cake, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
-    tag: "Skewers",
-    isSpicy: true,
+    tag: "Street Skewer",
+    isPopular: false,
     image: "assets/images/tteokkochi.png"
-  },
-  {
-    id: "bibimbap",
-    name: "Bibimbap (Veg)",
-    price: 18.00,
-    extraPrice: "Beef option: $20.00",
-    category: "main",
-    ingredients: "Rice, Carrot, Spinach, Mushroom, Hot Pepper Sauce, Sesame Oil, Garlic Powder, Salt, Soy Sauce, Sugar, Black Pepper",
-    tag: "Rice Bowl",
-    isSpicy: true,
-    image: "assets/images/bibimbap.png"
   },
   {
     id: "mandoo",
     name: "Mandoo (5 pcs)",
     price: 10.00,
-    category: "snack",
+    category: "snacks",
+    shortDesc: "Crispy pan-fried vegetable & noodle dumplings.",
     ingredients: "Bean Noodles, Cabbage, Carrots, Mushrooms, Onion, Flour Wrap, Sesame Oil, Salt, Black Pepper, Garlic Powder",
-    tag: "Dumplings",
-    isSpicy: false,
+    tag: "Crispy Bite",
+    isPopular: false,
     image: "assets/images/mandoo.png"
+  },
+  {
+    id: "kimchi",
+    name: "Kimchi (500g)",
+    price: 7.99,
+    extraPrice: "1kg pack: $12.99",
+    category: "sides",
+    shortDesc: "Traditional fermented spicy cabbage side.",
+    ingredients: "Napa Cabbage, Green Onion, Onion, Sugar, Salt, Chili Powder, Garlic Powder, Fish Sauce",
+    tag: "Fermented",
+    isPopular: false,
+    image: "assets/images/kimchi.png"
   }
 ];
 
@@ -96,7 +104,7 @@ const drinkItems = [
   {
     id: "soju",
     name: "Soju",
-    description: "Clear, distilled Korean liquor.",
+    description: "Clear, clean distilled liquor.",
     icon: "fa-solid fa-glass-whiskey",
     options: [
       { serving: "Cup (30ml)", price: 4.99 }
@@ -104,8 +112,8 @@ const drinkItems = [
   },
   {
     id: "cass-beer",
-    name: "Cass Beer",
-    description: "South Korea's top-selling light lager.",
+    name: "CASS Beer",
+    description: "South Korea's top crisp lager.",
     icon: "fa-solid fa-beer-mug-empty",
     options: [
       { serving: "Can (500ml)", price: 8.99 },
@@ -115,7 +123,7 @@ const drinkItems = [
   {
     id: "makgeolli",
     name: "Makgeolli",
-    description: "Traditional sweet, milky rice wine.",
+    description: "Traditional milky sparkling rice wine.",
     icon: "fa-solid fa-wine-glass",
     options: [
       { serving: "Cup (180ml)", price: 5.99 }
@@ -124,179 +132,170 @@ const drinkItems = [
 ];
 
 // ==========================================================================
-// DOM ELEMENTS
-// ==========================================================================
-
-const foodListContainer = document.getElementById("foodListContainer");
-const drinksListContainer = document.getElementById("drinksListContainer");
-const filterChips = document.querySelectorAll(".chip");
-const stickyNavTabs = document.querySelectorAll(".tab-link");
-const backToTopBtn = document.getElementById("backToTopBtn");
-
-// ==========================================================================
 // RENDER FUNCTIONS
 // ==========================================================================
 
 /**
- * Renders food cards in horizontal mobile layout
- * @param {Array} items - Array of food objects
+ * Builds HTML for a single food card with an accordion
  */
-function renderFoodList(items) {
-  if (!foodListContainer) return;
-  foodListContainer.innerHTML = "";
+function createFoodCardHtml(item, isPopularList = false) {
+  const extraBadgeHtml = item.extraPrice
+    ? `<span class="food-card-extras"><i class="fa-solid fa-circle-plus"></i> ${item.extraPrice}</span>`
+    : "";
 
-  if (items.length === 0) {
-    foodListContainer.innerHTML = `
-      <div style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem;">
-        No items found in this category.
-      </div>
-    `;
-    return;
-  }
-
-  items.forEach((item, index) => {
-    const card = document.createElement("div");
-    card.className = "food-card card-animation";
-    card.style.animationDelay = `${index * 0.03}s`; // Fast staggered animation
-
-    // Check for extra sizes/variations
-    const extraPriceHtml = item.extraPrice
-      ? `<div class="food-card-extras"><i class="fa-solid fa-circle-plus"></i> ${item.extraPrice}</div>`
-      : "";
-
-    // Spicy tag helper
-    const spiceIndicator = item.isSpicy
-      ? `<i class="fa-solid fa-pepper-hot" style="color: var(--color-red-light); margin-left: 4px;" title="Spicy"></i>`
-      : "";
-
-    card.innerHTML = `
+  return `
+    <div class="food-card card-animation ${isPopularList ? 'popular-card' : ''}">
       <div class="food-card-img-wrap">
         <span class="food-card-badge">${item.tag}</span>
         <img src="${item.image}" alt="${item.name}" loading="lazy">
       </div>
       <div class="food-card-info">
         <div class="food-card-header">
-          <span class="food-card-name">${item.name}${spiceIndicator}</span>
+          <span class="food-card-name">${item.name}</span>
           <span class="food-card-price">$${item.price.toFixed(2)}</span>
         </div>
-        <div class="food-card-ingredients-box">
-          <p class="food-card-ingredients-text">${item.ingredients}</p>
+        <p style="font-size: 0.76rem; color: var(--text-muted); font-weight: 300; margin-top: 2px;">${item.shortDesc}</p>
+        ${extraBadgeHtml}
+        
+        <!-- Collapsible Accordion Button -->
+        <button class="ingredient-toggle" aria-expanded="false" data-target="ingredients-${item.id}">
+          View ingredients <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        
+        <!-- Collapsible Content Wrapper -->
+        <div class="ingredients-content" id="ingredients-${item.id}">
+          <p class="ingredients-text">${item.ingredients}</p>
         </div>
-        ${extraPriceHtml}
       </div>
-    `;
-
-    foodListContainer.appendChild(card);
-  });
+    </div>
+  `;
 }
 
 /**
- * Renders drinks items in card list
- * @param {Array} drinks - Array of drinks
+ * Renders Popular Picks tray
  */
-function renderDrinksList(drinks) {
-  if (!drinksListContainer) return;
-  drinksListContainer.innerHTML = "";
+function renderPopularPicks() {
+  const popularGrid = document.getElementById("popularGrid");
+  if (!popularGrid) return;
+  
+  const populars = foodItems.filter(item => item.isPopular);
+  popularGrid.innerHTML = populars.map(item => createFoodCardHtml(item, true)).join("");
+}
 
-  drinks.forEach((drink) => {
-    const card = document.createElement("div");
-    card.className = "drink-item-card";
+/**
+ * Renders categorical food sections (Meals, Snacks, Sides)
+ */
+function renderFoodLists() {
+  const mealsList = document.getElementById("mealsList");
+  const snacksList = document.getElementById("snacksList");
+  const sidesList = document.getElementById("sidesList");
 
-    let pricingRowsHtml = "";
-    drink.options.forEach((opt) => {
-      const isHighlighted = opt.serving.includes("500ml");
-      pricingRowsHtml += `
-        <div class="drink-price-row ${isHighlighted ? 'highlight' : ''}">
-          <span class="drink-size">${opt.serving}</span>
-          <span class="drink-cost">$${opt.price.toFixed(2)}</span>
+  if (mealsList) {
+    const meals = foodItems.filter(item => item.category === "meals");
+    mealsList.innerHTML = meals.map(item => createFoodCardHtml(item)).join("");
+  }
+  if (snacksList) {
+    const snacks = foodItems.filter(item => item.category === "snacks");
+    snacksList.innerHTML = snacks.map(item => createFoodCardHtml(item)).join("");
+  }
+  if (sidesList) {
+    const sides = foodItems.filter(item => item.category === "sides");
+    sidesList.innerHTML = sides.map(item => createFoodCardHtml(item)).join("");
+  }
+}
+
+/**
+ * Renders drinks items panel list
+ */
+function renderDrinks() {
+  const drinksList = document.getElementById("drinksList");
+  if (!drinksList) return;
+
+  drinksList.innerHTML = drinkItems.map((drink) => {
+    let priceRows = drink.options.map((opt) => {
+      const is500ml = opt.serving.includes("500ml");
+      return `
+        <div class="drink-price-item ${is500ml ? 'highlight' : ''}">
+          <span class="drink-serving">${opt.serving}</span>
+          <span class="drink-price-val">$${opt.price.toFixed(2)}</span>
         </div>
       `;
-    });
+    }).join("");
 
-    card.innerHTML = `
-      <div class="drink-card-top">
-        <i class="${drink.icon} drink-card-icon"></i>
-        <div class="drink-card-details">
-          <h3 class="drink-card-name">${drink.name}</h3>
-          <p class="drink-card-desc">${drink.description}</p>
+    return `
+      <div class="drink-card">
+        <div class="drink-top-row">
+          <i class="${drink.icon} drink-icon"></i>
+          <div class="drink-title-wrap">
+            <h3 class="drink-name">${drink.name}</h3>
+            <p class="drink-desc">${drink.description}</p>
+          </div>
+        </div>
+        <div class="drink-pricing-list">
+          ${priceRows}
         </div>
       </div>
-      <div class="drink-card-pricing">
-        ${pricingRowsHtml}
-      </div>
     `;
-
-    drinksListContainer.appendChild(card);
-  });
+  }).join("");
 }
 
 // ==========================================================================
-// INTERACTIONS & NAVIGATION SCROLL
+// INTERACTIVE LOGIC & ACCORDIONS
 // ==========================================================================
 
-// Food Filter Chip selection
-filterChips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    filterChips.forEach((c) => {
-      c.classList.remove("active");
-      c.setAttribute("aria-pressed", "false");
-    });
-    chip.classList.add("active");
-    chip.setAttribute("aria-pressed", "true");
+// Global Event Delegation for Accordion Toggles
+document.addEventListener("click", (e) => {
+  const toggleBtn = e.target.closest(".ingredient-toggle");
+  if (!toggleBtn) return;
 
-    const category = chip.getAttribute("data-filter");
+  const card = toggleBtn.closest(".food-card");
+  if (!card) return;
 
-    // Smooth opacity filter transition
-    foodListContainer.style.opacity = "0.2";
-    setTimeout(() => {
-      if (category === "all") {
-        renderFoodList(foodItems);
-      } else {
-        const filtered = foodItems.filter((item) => item.category === category);
-        renderFoodList(filtered);
-      }
-      foodListContainer.style.opacity = "1";
-    }, 150);
-  });
-});
+  const accordion = card.querySelector(".ingredients-content");
+  if (!accordion) return;
 
-// Scroll Event: Back-to-Top button visibility
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 250) {
-    backToTopBtn.classList.add("visible");
+  const isExpanded = accordion.classList.toggle("expanded");
+  toggleBtn.setAttribute("aria-expanded", isExpanded);
+
+  if (isExpanded) {
+    toggleBtn.innerHTML = `Hide ingredients <i class="fa-solid fa-chevron-up"></i>`;
   } else {
-    backToTopBtn.classList.remove("visible");
+    toggleBtn.innerHTML = `View ingredients <i class="fa-solid fa-chevron-down"></i>`;
   }
 });
 
-// Scroll Back-to-Top click handler
-if (backToTopBtn) {
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
-}
-
-// Section Scroll Intersection Observer (Highlights Nav Tabs on Scroll)
-const sections = document.querySelectorAll("section[id]");
+// Category pills auto-highlight and scrolling synchronization
+const sections = document.querySelectorAll(".menu-section");
+const pillLinks = document.querySelectorAll(".pill-link");
+const pillsScrollWrapper = document.querySelector(".pills-scroll-wrapper");
 
 if ("IntersectionObserver" in window) {
   const observerOptions = {
     root: null,
-    rootMargin: "-25% 0px -65% 0px", // Focus tracking window around screen upper-middle section
+    rootMargin: "-20% 0px -65% 0px", // Window tracking viewport middle-upper region
     threshold: 0
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const currentSectionId = entry.target.getAttribute("id");
-        stickyNavTabs.forEach((tab) => {
-          tab.classList.remove("active");
-          if (tab.getAttribute("href") === `#${currentSectionId}`) {
-            tab.classList.add("active");
+        const id = entry.target.getAttribute("id");
+        
+        pillLinks.forEach((pill) => {
+          pill.classList.remove("active");
+          if (pill.getAttribute("href") === `#${id}`) {
+            pill.classList.add("active");
+            
+            // Scroll active pill into center of horizontal category bar
+            if (pillsScrollWrapper) {
+              const wrapperWidth = pillsScrollWrapper.offsetWidth;
+              const pillLeft = pill.offsetLeft;
+              const pillWidth = pill.offsetWidth;
+              pillsScrollWrapper.scrollTo({
+                left: pillLeft - (wrapperWidth / 2) + (pillWidth / 2),
+                behavior: "smooth"
+              });
+            }
           }
         });
       }
@@ -306,18 +305,47 @@ if ("IntersectionObserver" in window) {
   sections.forEach((sect) => observer.observe(sect));
 }
 
-// Manual active-class switch when clicking tabs (improves immediate feedback)
-stickyNavTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    stickyNavTabs.forEach((t) => t.classList.remove("active"));
-    tab.classList.add("active");
+// Click overrides to highlight pills instantly on tap
+pillLinks.forEach((pill) => {
+  pill.addEventListener("click", () => {
+    pillLinks.forEach((p) => p.classList.remove("active"));
+    pill.classList.add("active");
+  });
+});
+
+// Bottom Bar Shortcuts Scrolling overrides
+const bottomNavTop = document.getElementById("bottomNavTop");
+if (bottomNavTop) {
+  bottomNavTop.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
+
+// Close and clear hash navigations
+document.querySelectorAll(".bottom-nav-item, .pill-link").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const targetId = link.getAttribute("href");
+    if (targetId && targetId !== "#") {
+      e.preventDefault();
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+    }
   });
 });
 
 // ==========================================================================
-// DOM INITIALIZATION
+// DOM LOADING
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  renderFoodList(foodItems);
-  renderDrinksList(drinkItems);
+  renderPopularPicks();
+  renderFoodLists();
+  renderDrinks();
 });
