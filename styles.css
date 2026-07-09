@@ -1,0 +1,1330 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+:root {
+  /* Color Palette */
+  --bg-dark: #0b0b0d;          /* Pure rich charcoal/black */
+  --bg-medium: #121216;        /* Section backgrounds */
+  --bg-card: #1c1c22;          /* Card background */
+  --bg-card-hover: #25252e;    /* Card hover state */
+  
+  --color-primary: #f2a900;    /* Traditional Korean Gold/Yellow */
+  --color-primary-rgb: 242, 169, 0;
+  --color-primary-light: #ffd470;
+  --color-secondary: #c62828;  /* Traditional Korean Red accent */
+  --color-secondary-rgb: 198, 40, 40;
+  --color-secondary-light: #ef5350;
+  
+  --text-main: #f3f3f6;        /* High contrast off-white */
+  --text-muted: #a0a0ab;       /* Low contrast gray for secondary text */
+  --text-dark: #0b0b0d;        /* Dark text for highlight buttons */
+  
+  --border-color: rgba(242, 169, 0, 0.15);
+  --border-color-light: rgba(255, 255, 255, 0.05);
+  
+  /* Typography */
+  --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  
+  /* Layout & Transitions */
+  --max-width: 1200px;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-gold: 0 0 20px rgba(242, 169, 0, 0.15);
+  --shadow-red: 0 0 20px rgba(198, 40, 40, 0.2);
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for sticky header */
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY ELEMENTS
+   ========================================================================== */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Korean Lattice Background Pattern */
+.korean-pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M0 0h30v30H0zm30 30h30v30H30z' fill='none' stroke='%23f2a900' stroke-width='1' stroke-opacity='0.03'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='%23f2a900' stroke-width='0.5' stroke-opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   REUSABLE UTILITIES & LAYOUTS
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+  color: var(--color-primary-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  margin-bottom: 16px;
+}
+
+.section-badge.badge-red {
+  background-color: rgba(var(--color-secondary-rgb), 0.15);
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.4);
+  color: var(--color-secondary-light);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #ffffff 60%, var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title.text-light {
+  background: linear-gradient(135deg, #ffffff 60%, var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* Custom Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-medium);
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--text-dark);
+  box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(var(--color-primary-rgb), 0.5);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   NAVIGATION HEADER
+   ========================================================================== */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(11, 11, 13, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color-light);
+  transition: var(--transition-medium);
+}
+
+.main-header.scrolled {
+  padding: 10px 0;
+  background-color: rgba(11, 11, 13, 0.95);
+  box-shadow: var(--shadow-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px;
+  transition: var(--transition-medium);
+}
+
+.main-header.scrolled .nav-container {
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.logo-emblem {
+  font-size: 1.6rem;
+}
+
+.logo-text {
+  background: linear-gradient(to right, #ffffff, var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.nav-menu ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--color-primary-light);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  padding-top: 100px;
+  background-color: var(--bg-dark);
+  /* Fallback color, overlay, and lattice pattern */
+  background-image: 
+    linear-gradient(to bottom, rgba(11, 11, 13, 0.4) 0%, rgba(11, 11, 13, 0.9) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h50v50H0zm50 50h50v50H50z' fill='none' stroke='%23f2a900' stroke-width='1.5' stroke-opacity='0.03'/%3E%3Cpath d='M50 0v100M0 50h100' stroke='%23f2a900' stroke-width='0.75' stroke-opacity='0.02'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 40px 20px;
+  z-index: 2;
+  position: relative;
+  animation: fadeInUp 1s ease;
+}
+
+.korean-pattern-accent {
+  width: 80px;
+  height: 6px;
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  margin: 0 auto 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(242, 169, 0, 0.3);
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #ffffff 60%, var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--color-primary-light);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   MENU & FILTER BAR
+   ========================================================================== */
+.menu-section {
+  background-color: var(--bg-medium);
+  /* Add traditional pattern to section background */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z' fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.01'/%3E%3C/svg%3E");
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 50px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color-light);
+  background-color: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-btn i {
+  font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.5);
+  color: var(--color-primary-light);
+  background-color: rgba(var(--color-primary-rgb), 0.04);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: var(--text-dark);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
+}
+
+/* ==========================================================================
+   FOOD CARDS GRID
+   ========================================================================== */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+  min-height: 400px;
+  transition: opacity 0.3s ease;
+}
+
+/* Food Card styling */
+.food-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color-light);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.food-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+.food-card-img-container {
+  height: 230px;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1a20;
+}
+
+.food-card-img-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(28, 28, 34, 1) 0%, rgba(28, 28, 34, 0) 100%);
+  z-index: 2;
+}
+
+.food-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.food-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Food Card Badges */
+.food-card-price-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  border: 2px solid var(--bg-card);
+  z-index: 3;
+  box-shadow: var(--shadow-md);
+}
+
+.food-card-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(var(--color-primary-rgb), 0.95);
+  color: var(--text-dark);
+  padding: 4px 12px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: var(--border-radius-sm);
+  z-index: 3;
+}
+
+/* Food Card Content */
+.food-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  z-index: 3;
+}
+
+.food-card-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.food-card-title {
+  font-size: 1.4rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
+.food-card-divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--border-color) 0%, rgba(255,255,255,0.02) 100%);
+  margin-bottom: 16px;
+}
+
+.food-card-ingredients {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ingredients-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ingredients-list {
+  font-weight: 300;
+}
+
+/* Special styling for items with extra price options, like Kimchi */
+.food-card-extra-price {
+  margin-top: 12px;
+  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(var(--color-primary-rgb), 0.3);
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  color: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.food-card-extra-price i {
+  color: var(--color-secondary);
+}
+
+/* noscript container styling */
+.noscript-warning {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-secondary);
+  background-color: rgba(var(--color-secondary-rgb), 0.1);
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* Animation for filters */
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.card-animation {
+  animation: fadeInCard 0.4s ease forwards;
+}
+
+/* ==========================================================================
+   FESTIVAL COMBOS SECTION
+   ========================================================================== */
+.combos-section {
+  background-color: var(--bg-dark);
+  border-top: 1px solid var(--border-color-light);
+  border-bottom: 1px solid var(--border-color-light);
+  overflow: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(var(--color-secondary-rgb), 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(var(--color-primary-rgb), 0.04) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath d='M0 0h60v60H0zm60 60h60v60H60z' fill='none' stroke='%23c62828' stroke-width='1.5' stroke-opacity='0.02'/%3E%3C/svg%3E");
+}
+
+.combos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.combo-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #15151a 100%);
+  border: 2px solid rgba(var(--color-secondary-rgb), 0.3);
+  border-radius: var(--border-radius-lg);
+  padding: 40px;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+}
+
+.combo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+}
+
+.combo-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-lg), var(--shadow-red);
+}
+
+.combo-badge {
+  position: absolute;
+  top: -1px;
+  left: 40px;
+  background: linear-gradient(135deg, var(--color-secondary), #8b0000);
+  color: #ffffff;
+  padding: 6px 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.combo-card-content {
+  margin-top: 10px;
+}
+
+.combo-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.combo-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.combo-items {
+  background-color: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.combo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.combo-item .bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-primary);
+  flex-shrink: 0;
+}
+
+.combo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.combo-price-tag {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-secondary-light);
+  font-family: var(--font-primary);
+  display: flex;
+  align-items: flex-start;
+}
+
+.combo-currency {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 6px;
+  margin-right: 2px;
+}
+
+.combo-cents {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.combo-save-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-primary-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 50px;
+}
+
+/* ==========================================================================
+   DRINKS SECTION
+   ========================================================================== */
+.drinks-section {
+  background-color: var(--bg-medium);
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.drink-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-md);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.drink-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 100% 0%, rgba(var(--color-primary-rgb), 0.05) 0%, transparent 70%);
+}
+
+.drink-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-md), var(--shadow-gold);
+}
+
+.drink-icon {
+  font-size: 2rem;
+  color: var(--color-primary-light);
+  margin-bottom: 20px;
+}
+
+.drink-header {
+  margin-bottom: 12px;
+}
+
+.drink-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drink-serving-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.drink-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.drink-pricing-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drink-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-sm);
+}
+
+.drink-price-row.highlight {
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+  background-color: rgba(var(--color-primary-rgb), 0.02);
+}
+
+.drink-option-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+}
+
+.drink-price-val {
+  font-weight: 700;
+  color: var(--color-primary-light);
+  font-size: 1.1rem;
+}
+
+/* Legal Disclaimer Box */
+.legal-disclaimer {
+  max-width: 800px;
+  margin: 50px auto 0;
+  padding: 20px 30px;
+  background-color: rgba(198, 40, 40, 0.05);
+  border-left: 4px solid var(--color-secondary);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.disclaimer-icon {
+  font-size: 1.5rem;
+  color: var(--color-secondary-light);
+  flex-shrink: 0;
+}
+
+.disclaimer-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   INGREDIENTS & ALLERGENS SECTION
+   ========================================================================== */
+.ingredients-section {
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+.ingredients-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+}
+
+.ingredient-intro-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ingredient-intro-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.ingredient-intro-card p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.condiment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.condiment-list li {
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.condiment-list li::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.condiment-list li strong {
+  color: #ffffff;
+}
+
+.allergen-alert-card {
+  background-color: #171012;
+  border: 1px solid rgba(var(--color-secondary-rgb), 0.2);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  height: max-content;
+}
+
+.allergen-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-secondary-light);
+  font-size: 1.3rem;
+  font-family: var(--font-serif);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.allergen-alert-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.allergen-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.allergen-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 16px;
+}
+
+.allergen-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.allergen-label {
+  display: block;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.allergen-value {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   FOOTER SECTION
+   ========================================================================== */
+.main-footer {
+  background-color: #070709;
+  border-top: 1px solid var(--border-color-light);
+  padding: 80px 0 0 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  max-width: 480px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.footer-links h4 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary-light);
+  padding-left: 6px;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-color-light);
+  padding: 30px 0;
+  text-align: center;
+  background-color: #040405;
+  font-size: 0.85rem;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-bottom .credits {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.footer-bottom i {
+  color: var(--color-secondary-light);
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   BACK TO TOP BUTTON
+   ========================================================================== */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: -60px; /* Hidden offscreen by default */
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);
+  color: var(--text-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-md), 0 0 15px rgba(var(--color-primary-rgb), 0.2);
+  z-index: 999;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.back-to-top-btn.visible {
+  right: 30px;
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--color-primary-light);
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(var(--color-primary-rgb), 0.4);
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .combos-grid {
+    gap: 30px;
+  }
+  
+  .drinks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  /* Mobile Menu Toggle */
+  .mobile-nav-toggle {
+    display: block;
+    z-index: 1001;
+    font-size: 1.6rem;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: rgba(11, 11, 13, 0.98);
+    backdrop-filter: blur(12px);
+    border-left: 1px solid var(--border-color);
+    padding: 100px 30px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .nav-menu.open {
+    right: 0;
+  }
+  
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .hero-tagline {
+    font-size: 1.1rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 15px;
+  }
+  
+  .food-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  .combos-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  .drinks-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  .ingredients-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-bottom .container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .filter-container {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+  
+  .combo-card {
+    padding: 30px 20px;
+  }
+  
+  .combo-title {
+    font-size: 1.5rem;
+  }
+  
+  .combo-badge {
+    left: 20px;
+  }
+}
