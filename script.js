@@ -344,8 +344,14 @@ document.querySelectorAll(".bottom-nav-item, .pill-link").forEach((link) => {
 // ==========================================================================
 // DOM LOADING
 // ==========================================================================
-document.addEventListener("DOMContentLoaded", () => {
+function initMenuApp() {
   renderPopularPicks();
   renderFoodLists();
   renderDrinks();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMenuApp);
+} else {
+  initMenuApp();
+}

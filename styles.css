@@ -75,8 +75,8 @@ body {
 @media (min-width: 461px) {
   body {
     background-image: 
-      radial-gradient(circle at 15% 25%, rgba(var(--color-red-rgb), 0.04) 0%, transparent 40%),
-      radial-gradient(circle at 85% 75%, rgba(var(--color-gold-rgb), 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 15% 25%, rgba(211, 47, 47, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(242, 169, 0, 0.04) 0%, transparent 40%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z' fill='none' stroke='%23f2a900' stroke-width='0.75' stroke-opacity='0.02'/%3E%3C/svg%3E");
     background-attachment: fixed;
     padding: 15px 0;
@@ -121,6 +121,14 @@ body {
 .logo-icon {
   font-size: 1.8rem;
   line-height: 1;
+}
+
+.logo-taeguk {
+  background: linear-gradient(135deg, #cd2e3a 50%, #0047a0 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 .header-titles h1 {
@@ -198,7 +206,7 @@ body {
   background-color: var(--color-gold);
   color: var(--text-dark);
   border-color: var(--color-gold);
-  box-shadow: 0 2px 8px rgba(var(--color-gold-rgb), 0.2);
+  box-shadow: 0 2px 8px rgba(242, 169, 0, 0.2);
 }
 
 /* ==========================================================================
@@ -276,7 +284,7 @@ body {
   position: absolute;
   top: 4px;
   left: 4px;
-  background-color: rgba(var(--color-gold-rgb), 0.95);
+  background-color: rgba(242, 169, 0, 0.95);
   color: var(--text-dark);
   font-size: 0.55rem;
   font-weight: 700;
@@ -552,8 +560,8 @@ body {
 }
 
 .drink-price-item.highlight {
-  border-color: rgba(var(--color-gold-rgb), 0.25);
-  background-color: rgba(var(--color-gold-rgb), 0.02);
+  border-color: rgba(242, 169, 0, 0.25);
+  background-color: rgba(242, 169, 0, 0.02);
 }
 
 .drink-serving {
@@ -632,7 +640,7 @@ body {
 
 .allergen-box.alert {
   background-color: #171012;
-  border: 1px solid rgba(var(--color-red-rgb), 0.15);
+  border: 1px solid rgba(211, 47, 47, 0.15);
 }
 
 .allergen-box.alert h4 {
