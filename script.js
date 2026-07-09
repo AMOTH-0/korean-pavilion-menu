@@ -1,6 +1,6 @@
 /**
- * Folklorama Korean Pavilion - Interactive Food Menu
- * Developed for premium aesthetic, accessibility, and high performance.
+ * Folklorama Korean Pavilion - Mobile Web App Menu
+ * Highly optimized for touch targets, scanning speed, and lightweight performance.
  */
 
 // ==========================================================================
@@ -14,7 +14,7 @@ const foodItems = [
     price: 20.00,
     category: "main",
     ingredients: "Chicken, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
-    tag: "Festival Favorite",
+    tag: "Popular",
     isSpicy: true,
     image: "assets/images/chicken_gangjeong.png"
   },
@@ -24,7 +24,7 @@ const foodItems = [
     price: 20.00,
     category: "main",
     ingredients: "Beef, Yellow Onion, Carrot, Green Onion, Sesame Oil, Salt, Garlic Powder, Soy Sauce, Sugar, Black Pepper",
-    tag: "Signature Dish",
+    tag: "Signature",
     isSpicy: false,
     image: "assets/images/bulgogi.png"
   },
@@ -34,7 +34,7 @@ const foodItems = [
     price: 10.00,
     category: "snack",
     ingredients: "Rice, Seaweed, Carrots, Cucumber, Pickled Radish, Sesame Oil, Salt, Soy Sauce, Sugar or Syrup, Vinegar, Egg",
-    tag: "Classic Street Food",
+    tag: "Classic",
     isSpicy: false,
     image: "assets/images/gimbap.png"
   },
@@ -44,7 +44,7 @@ const foodItems = [
     price: 10.00,
     category: "snack",
     ingredients: "Sweet Potato Noodle, Carrots, Mushrooms, Spinach, Sesame Oil, Salt, Garlic Powder, Soy Sauce, Sugar, Black Pepper",
-    tag: "Traditional Noodles",
+    tag: "Noodles",
     isSpicy: false,
     image: "assets/images/japchae.png"
   },
@@ -52,10 +52,10 @@ const foodItems = [
     id: "kimchi",
     name: "Kimchi (500g)",
     price: 7.99,
-    extraPrice: "1kg size option available for $12.99",
+    extraPrice: "1kg size: $12.99",
     category: "side",
     ingredients: "Napa Cabbage, Green Onion, Onion, Sugar, Salt, Chili Powder, Garlic Powder, Fish Sauce",
-    tag: "Traditional Side",
+    tag: "Fermented",
     isSpicy: true,
     image: "assets/images/kimchi.png"
   },
@@ -65,18 +65,18 @@ const foodItems = [
     price: 6.00,
     category: "snack",
     ingredients: "Rice Cake, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
-    tag: "Sweet & Spicy Skewers",
+    tag: "Skewers",
     isSpicy: true,
     image: "assets/images/tteokkochi.png"
   },
   {
     id: "bibimbap",
-    name: "Bibimbap (Vegetable)",
+    name: "Bibimbap (Veg)",
     price: 18.00,
-    extraPrice: "Optional Beef version: $20.00",
+    extraPrice: "Beef option: $20.00",
     category: "main",
     ingredients: "Rice, Carrot, Spinach, Mushroom, Hot Pepper Sauce, Sesame Oil, Garlic Powder, Salt, Soy Sauce, Sugar, Black Pepper",
-    tag: "Healthy & Nutritious",
+    tag: "Rice Bowl",
     isSpicy: true,
     image: "assets/images/bibimbap.png"
   },
@@ -86,7 +86,7 @@ const foodItems = [
     price: 10.00,
     category: "snack",
     ingredients: "Bean Noodles, Cabbage, Carrots, Mushrooms, Onion, Flour Wrap, Sesame Oil, Salt, Black Pepper, Garlic Powder",
-    tag: "Crispy Dumplings",
+    tag: "Dumplings",
     isSpicy: false,
     image: "assets/images/mandoo.png"
   }
@@ -96,7 +96,7 @@ const drinkItems = [
   {
     id: "soju",
     name: "Soju",
-    description: "Clear, clean, and distilled traditional Korean liquor.",
+    description: "Clear, distilled Korean liquor.",
     icon: "fa-solid fa-glass-whiskey",
     options: [
       { serving: "Cup (30ml)", price: 4.99 }
@@ -105,7 +105,7 @@ const drinkItems = [
   {
     id: "cass-beer",
     name: "Cass Beer",
-    description: "South Korea's top-selling lager. Crisp, refreshing, and light.",
+    description: "South Korea's top-selling light lager.",
     icon: "fa-solid fa-beer-mug-empty",
     options: [
       { serving: "Can (500ml)", price: 8.99 },
@@ -115,7 +115,7 @@ const drinkItems = [
   {
     id: "makgeolli",
     name: "Makgeolli",
-    description: "Sweet, milky, and slightly sparkling traditional Korean rice wine.",
+    description: "Traditional sweet, milky rice wine.",
     icon: "fa-solid fa-wine-glass",
     options: [
       { serving: "Cup (180ml)", price: 5.99 }
@@ -124,33 +124,30 @@ const drinkItems = [
 ];
 
 // ==========================================================================
-// DOM ELEMENT SELECTIONS
+// DOM ELEMENTS
 // ==========================================================================
 
-const foodGrid = document.getElementById("foodGrid");
-const drinksGrid = document.getElementById("drinksGrid");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const mainHeader = document.getElementById("mainHeader");
-const backToTopBtn = document.getElementById("backToTop");
-const mobileNavToggle = document.getElementById("mobileNavToggle");
-const primaryNav = document.getElementById("primaryNav");
-const navLinks = document.querySelectorAll(".nav-link");
+const foodListContainer = document.getElementById("foodListContainer");
+const drinksListContainer = document.getElementById("drinksListContainer");
+const filterChips = document.querySelectorAll(".chip");
+const stickyNavTabs = document.querySelectorAll(".tab-link");
+const backToTopBtn = document.getElementById("backToTopBtn");
 
 // ==========================================================================
 // RENDER FUNCTIONS
 // ==========================================================================
 
 /**
- * Renders food cards into the menu grid
- * @param {Array} items - Array of food objects to render
+ * Renders food cards in horizontal mobile layout
+ * @param {Array} items - Array of food objects
  */
-function renderFoodGrid(items) {
-  if (!foodGrid) return;
-  foodGrid.innerHTML = "";
+function renderFoodList(items) {
+  if (!foodListContainer) return;
+  foodListContainer.innerHTML = "";
 
   if (items.length === 0) {
-    foodGrid.innerHTML = `
-      <div class="noscript-warning" style="border-color: var(--border-color); background: transparent;">
+    foodListContainer.innerHTML = `
+      <div style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem;">
         No items found in this category.
       </div>
     `;
@@ -158,149 +155,121 @@ function renderFoodGrid(items) {
   }
 
   items.forEach((item, index) => {
-    // Generate card element
     const card = document.createElement("div");
     card.className = "food-card card-animation";
-    // Stagger animation timing slightly for premium render effect
-    card.style.animationDelay = `${index * 0.05}s`;
+    card.style.animationDelay = `${index * 0.03}s`; // Fast staggered animation
 
-    // Extra option tag if present
-    const extraPriceHtml = item.extraPrice 
-      ? `<div class="food-card-extra-price">
-          <i class="fa-solid fa-circle-plus"></i> ${item.extraPrice}
-         </div>`
+    // Check for extra sizes/variations
+    const extraPriceHtml = item.extraPrice
+      ? `<div class="food-card-extras"><i class="fa-solid fa-circle-plus"></i> ${item.extraPrice}</div>`
       : "";
 
-    // Spicy tag icon helper
-    const spiceIcon = item.isSpicy 
-      ? ` <i class="fa-solid fa-pepper-hot" style="color: var(--color-secondary-light); margin-left: 5px;" title="Spicy"></i>` 
+    // Spicy tag helper
+    const spiceIndicator = item.isSpicy
+      ? `<i class="fa-solid fa-pepper-hot" style="color: var(--color-red-light); margin-left: 4px;" title="Spicy"></i>`
       : "";
 
     card.innerHTML = `
-      <div class="food-card-img-container">
-        <span class="food-card-tag">${item.tag}</span>
-        <span class="food-card-price-badge">$${item.price.toFixed(2)}</span>
-        <img src="${item.image}" alt="Delicious fresh plate of ${item.name}" loading="lazy">
+      <div class="food-card-img-wrap">
+        <span class="food-card-badge">${item.tag}</span>
+        <img src="${item.image}" alt="${item.name}" loading="lazy">
       </div>
-      <div class="food-card-body">
-        <span class="food-card-category">${item.category} dish</span>
-        <h3 class="food-card-title">${item.name}${spiceIcon}</h3>
-        <div class="food-card-divider"></div>
-        <div class="food-card-ingredients">
-          <span class="ingredients-title">
-            <i class="fa-solid fa-list-check"></i> Ingredients
-          </span>
-          <span class="ingredients-list">${item.ingredients}</span>
+      <div class="food-card-info">
+        <div class="food-card-header">
+          <span class="food-card-name">${item.name}${spiceIndicator}</span>
+          <span class="food-card-price">$${item.price.toFixed(2)}</span>
+        </div>
+        <div class="food-card-ingredients-box">
+          <p class="food-card-ingredients-text">${item.ingredients}</p>
         </div>
         ${extraPriceHtml}
       </div>
     `;
 
-    foodGrid.appendChild(card);
+    foodListContainer.appendChild(card);
   });
 }
 
 /**
- * Renders drink cards into the drinks section grid
- * @param {Array} drinks - Array of drink objects to render
+ * Renders drinks items in card list
+ * @param {Array} drinks - Array of drinks
  */
-function renderDrinksGrid(drinks) {
-  if (!drinksGrid) return;
-  drinksGrid.innerHTML = "";
+function renderDrinksList(drinks) {
+  if (!drinksListContainer) return;
+  drinksListContainer.innerHTML = "";
 
   drinks.forEach((drink) => {
     const card = document.createElement("div");
-    card.className = "drink-card";
+    card.className = "drink-item-card";
 
-    // Generate pricing options rows
-    let pricingHtml = "";
+    let pricingRowsHtml = "";
     drink.options.forEach((opt) => {
-      // Highlight Cass Can since it's the premium volume
       const isHighlighted = opt.serving.includes("500ml");
-      pricingHtml += `
+      pricingRowsHtml += `
         <div class="drink-price-row ${isHighlighted ? 'highlight' : ''}">
-          <span class="drink-option-name">
-            <i class="fa-solid fa-caret-right" style="color: var(--color-primary)"></i> ${opt.serving}
-          </span>
-          <span class="drink-price-val">$${opt.price.toFixed(2)}</span>
+          <span class="drink-size">${opt.serving}</span>
+          <span class="drink-cost">$${opt.price.toFixed(2)}</span>
         </div>
       `;
     });
 
     card.innerHTML = `
-      <div>
-        <div class="drink-icon">
-          <i class="${drink.icon}"></i>
+      <div class="drink-card-top">
+        <i class="${drink.icon} drink-card-icon"></i>
+        <div class="drink-card-details">
+          <h3 class="drink-card-name">${drink.name}</h3>
+          <p class="drink-card-desc">${drink.description}</p>
         </div>
-        <div class="drink-header">
-          <span class="drink-serving-label">Korean Spirits</span>
-          <h3 class="drink-title">${drink.name}</h3>
-        </div>
-        <p class="drink-desc">${drink.description}</p>
       </div>
-      <div class="drink-pricing-options">
-        ${pricingHtml}
+      <div class="drink-card-pricing">
+        ${pricingRowsHtml}
       </div>
     `;
 
-    drinksGrid.appendChild(card);
+    drinksListContainer.appendChild(card);
   });
 }
 
 // ==========================================================================
-// EVENT HANDLERS & ROUTING LOGIC
+// INTERACTIONS & NAVIGATION SCROLL
 // ==========================================================================
 
-// Category Filter Handling
-filterButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // Toggle active state for button
-    filterButtons.forEach((b) => {
-      b.classList.remove("active");
-      b.setAttribute("aria-pressed", "false");
+// Food Filter Chip selection
+filterChips.forEach((chip) => {
+  chip.addEventListener("click", () => {
+    filterChips.forEach((c) => {
+      c.classList.remove("active");
+      c.setAttribute("aria-pressed", "false");
     });
-    btn.classList.add("active");
-    btn.setAttribute("aria-pressed", "true");
+    chip.classList.add("active");
+    chip.setAttribute("aria-pressed", "true");
 
-    const category = btn.getAttribute("data-filter");
+    const category = chip.getAttribute("data-filter");
 
-    // Fade grid out, filter items, and fade back in
-    if (foodGrid) {
-      foodGrid.style.opacity = "0.3";
-      
-      setTimeout(() => {
-        if (category === "all") {
-          renderFoodGrid(foodItems);
-        } else {
-          const filtered = foodItems.filter((item) => item.category === category);
-          renderFoodGrid(filtered);
-        }
-        foodGrid.style.opacity = "1";
-      }, 200);
-    }
+    // Smooth opacity filter transition
+    foodListContainer.style.opacity = "0.2";
+    setTimeout(() => {
+      if (category === "all") {
+        renderFoodList(foodItems);
+      } else {
+        const filtered = foodItems.filter((item) => item.category === category);
+        renderFoodList(filtered);
+      }
+      foodListContainer.style.opacity = "1";
+    }, 150);
   });
 });
 
-// Scroll Behaviors (Sticky nav bar, Back-to-top floating button)
+// Scroll Event: Back-to-Top button visibility
 window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-
-  // Header Sticky state
-  if (scrollTop > 50) {
-    mainHeader.classList.add("scrolled");
-  } else {
-    mainHeader.classList.remove("scrolled");
-  }
-
-  // Floating button visible threshold
-  if (scrollTop > 300) {
+  if (window.scrollY > 250) {
     backToTopBtn.classList.add("visible");
   } else {
     backToTopBtn.classList.remove("visible");
   }
 });
 
-// Back to Top button click
+// Scroll Back-to-Top click handler
 if (backToTopBtn) {
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({
@@ -310,69 +279,45 @@ if (backToTopBtn) {
   });
 }
 
-// Mobile Menu Navigation toggle
-if (mobileNavToggle) {
-  mobileNavToggle.addEventListener("click", () => {
-    const isExpanded = mobileNavToggle.getAttribute("aria-expanded") === "true";
-    mobileNavToggle.setAttribute("aria-expanded", !isExpanded);
-    primaryNav.classList.toggle("open");
-    
-    // Toggle icon class between bars and Xmark
-    const icon = mobileNavToggle.querySelector("i");
-    if (icon) {
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-xmark");
-    }
-  });
-}
-
-// Close mobile navigation on menu item click
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    if (primaryNav.classList.contains("open")) {
-      primaryNav.classList.remove("open");
-      mobileNavToggle.setAttribute("aria-expanded", "false");
-      const icon = mobileNavToggle.querySelector("i");
-      if (icon) {
-        icon.className = "fa-solid fa-bars";
-      }
-    }
-  });
-});
-
-// Section highlighting in Nav menu on scroll (using IntersectionObserver)
+// Section Scroll Intersection Observer (Highlights Nav Tabs on Scroll)
 const sections = document.querySelectorAll("section[id]");
 
 if ("IntersectionObserver" in window) {
   const observerOptions = {
     root: null,
-    rootMargin: "-20% 0px -60% 0px", // Highlight nav item when section covers viewport center
+    rootMargin: "-25% 0px -65% 0px", // Focus tracking window around screen upper-middle section
     threshold: 0
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${id}`) {
-            link.classList.add("active");
+        const currentSectionId = entry.target.getAttribute("id");
+        stickyNavTabs.forEach((tab) => {
+          tab.classList.remove("active");
+          if (tab.getAttribute("href") === `#${currentSectionId}`) {
+            tab.classList.add("active");
           }
         });
       }
     });
   }, observerOptions);
 
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
+  sections.forEach((sect) => observer.observe(sect));
 }
 
+// Manual active-class switch when clicking tabs (improves immediate feedback)
+stickyNavTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    stickyNavTabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+  });
+});
+
 // ==========================================================================
-// INITIAL SETUP ON DOM LOAD
+// DOM INITIALIZATION
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-  renderFoodGrid(foodItems);
-  renderDrinksGrid(drinkItems);
+  renderFoodList(foodItems);
+  renderDrinksList(drinkItems);
 });

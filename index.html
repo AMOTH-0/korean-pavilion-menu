@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Folklorama Korean Pavilion Food Menu</title>
+  <title>Korean Pavilion - Folklorama Food Menu</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Explore the authentic Folklorama Korean Pavilion food menu featuring Bulgogi, Bibimbap, Gimbap, Japchae, Kimchi, Korean drinks, and festival combos.">
+  <meta name="description" content="Explore the Folklorama Korean Pavilion food menu: Bulgogi, Bibimbap, Gimbap, Japchae, Kimchi, Korean drinks, and festival combos. Optimized for mobile.">
   <meta name="keywords" content="Folklorama, Korean Pavilion, Korean Food, Menu, Winnipeg, Bulgogi, Bibimbap, Gimbap, Kimchi, Soju, Makgeolli">
   <meta name="author" content="Korean Pavilion">
   
@@ -17,18 +17,12 @@
   <meta property="og:description" content="Savor authentic Korean dishes, special combos, and traditional drinks at the Folklorama Korean Pavilion.">
   <meta property="og:image" content="assets/images/bibimbap.png">
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Folklorama Korean Pavilion Food Menu">
-  <meta property="twitter:description" content="Savor authentic Korean dishes, special combos, and traditional drinks at the Folklorama Korean Pavilion.">
-  <meta property="twitter:image" content="assets/images/bibimbap.png">
-
-  <!-- Google Fonts: Outfit (modern sans) & Playfair Display (premium serif accent) -->
+  <!-- Google Fonts: Outfit (modern sans) & Playfair Display (serif accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome Icons for modern visuals -->
+  <!-- FontAwesome Icons for clean mobile app buttons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Custom Stylesheet -->
@@ -36,244 +30,157 @@
 </head>
 <body>
 
-  <!-- Sticky Navigation Header -->
-  <header class="main-header" id="mainHeader">
-    <div class="nav-container">
-      <a href="#" class="logo" aria-label="Folklorama Korean Pavilion Home">
-        <span class="logo-emblem">🇰🇷</span>
-        <span class="logo-text">K-Pavilion</span>
+  <!-- Main Mobile viewport wrapper -->
+  <div class="mobile-app-wrapper">
+    
+    <!-- App Header (Reduced Banner) -->
+    <header class="app-header">
+      <div class="pattern-overlay"></div>
+      <div class="header-content">
+        <span class="logo-badge">🇰🇷 FOLKLORAMA</span>
+        <h1 class="header-title">Korean Pavilion Menu</h1>
+        <p class="header-subtitle">Authentic Food & Drinks</p>
+        <span class="header-guide">Tap a section below to browse</span>
+      </div>
+    </header>
+
+    <!-- Sticky Navigation Tabs -->
+    <nav class="app-nav-tabs" id="stickyNavTabs">
+      <a href="#food-section" class="tab-link active" data-section="food-section">
+        <i class="fa-solid fa-utensils"></i>
+        <span>Food</span>
       </a>
-      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <nav class="nav-menu" id="primaryNav">
-        <ul>
-          <li><a href="#menu-section" class="nav-link"><i class="fa-solid fa-utensils"></i> Food Menu</a></li>
-          <li><a href="#combos-section" class="nav-link"><i class="fa-solid fa-fire"></i> Combos</a></li>
-          <li><a href="#drinks-section" class="nav-link"><i class="fa-solid fa-glass-water"></i> Drinks</a></li>
-          <li><a href="#ingredients-section" class="nav-link"><i class="fa-solid fa-leaf"></i> Ingredients</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+      <a href="#combos-section" class="tab-link" data-section="combos-section">
+        <i class="fa-solid fa-fire"></i>
+        <span>Combos</span>
+      </a>
+      <a href="#drinks-section" class="tab-link" data-section="drinks-section">
+        <i class="fa-solid fa-glass-water"></i>
+        <span>Drinks</span>
+      </a>
+      <a href="#ingredients-section" class="tab-link" data-section="ingredients-section">
+        <i class="fa-solid fa-leaf"></i>
+        <span>Ingredients</span>
+      </a>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section" id="home">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="korean-pattern-accent"></div>
-      <h1 class="hero-title">Folklorama Korean Pavilion</h1>
-      <h2 class="hero-subtitle">Authentic Korean Food Menu</h2>
-      <p class="hero-tagline">Enjoy classic Korean dishes, festival favourites, and traditional drinks made fresh with authentic ingredients.</p>
-      <div class="hero-actions">
-        <a href="#menu-section" class="btn btn-primary" id="btnViewMenu">View Menu <i class="fa-solid fa-chevron-down"></i></a>
-        <a href="#drinks-section" class="btn btn-secondary" id="btnViewDrinks">Drinks <i class="fa-solid fa-glass-water"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Filter & Food Menu Section -->
-  <section class="section menu-section" id="menu-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Taste of Seoul</span>
-        <h2 class="section-title">Delicious Korean Classics</h2>
-        <p class="section-subtitle">Select a category below to explore our carefully curated selection of traditional festival favorites.</p>
-      </div>
-
-      <!-- Categories Filter Bar -->
-      <div class="filter-container">
-        <button class="filter-btn active" data-filter="all" aria-pressed="true">
-          <i class="fa-solid fa-border-all"></i> All Items
-        </button>
-        <button class="filter-btn" data-filter="main" aria-pressed="false">
-          <i class="fa-solid fa-bowl-rice"></i> Main Dishes
-        </button>
-        <button class="filter-btn" data-filter="snack" aria-pressed="false">
-          <i class="fa-solid fa-hotdog"></i> Snacks
-        </button>
-        <button class="filter-btn" data-filter="side" aria-pressed="false">
-          <i class="fa-solid fa-seedling"></i> Sides
-        </button>
-      </div>
-
-      <!-- Food Menu Grid (Populated dynamically via JS) -->
-      <div class="food-grid" id="foodGrid">
-        <!-- JS will render cards here. Below is a fallback for SEO/Accessibility -->
-        <noscript>
-          <div class="noscript-warning">
-            Please enable JavaScript to view our interactive menu, or read our food items listed below.
-          </div>
-        </noscript>
-      </div>
-    </div>
-  </section>
-
-  <!-- Festival Combos Section -->
-  <section class="section combos-section" id="combos-section">
-    <div class="combos-bg-decor"></div>
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-badge badge-red">Best Value</span>
-        <h2 class="section-title text-light">Festival Combos</h2>
-        <p class="section-subtitle text-muted">Get the best of both worlds! Try our special combos designed to give you a true taste of Korean street food at a great price.</p>
-      </div>
-
-      <div class="combos-grid">
-        <!-- Combo 1 Card -->
-        <div class="combo-card">
-          <div class="combo-badge">Combo 1</div>
-          <div class="combo-card-content">
-            <h3 class="combo-title">Bulgogi & Mandoo Feast</h3>
-            <p class="combo-desc">A perfect combination of sweet-savory beef and crispy dumplings.</p>
-            <div class="combo-items">
-              <div class="combo-item">
-                <span class="bullet"></span>
-                <span>½ order of classic Bulgogi Beef</span>
-              </div>
-              <div class="combo-item">
-                <span class="bullet"></span>
-                <span>3 pieces of crispy Mandoo (Dumplings)</span>
-              </div>
-            </div>
-            <div class="combo-footer">
-              <div class="combo-price-tag">
-                <span class="combo-currency">$</span>15<span class="combo-cents">.00</span>
-              </div>
-              <span class="combo-save-label"><i class="fa-solid fa-circle-check"></i> Great Deal</span>
-            </div>
-          </div>
+    <!-- Main Content Area -->
+    <main class="app-main-content">
+      
+      <!-- Food Section -->
+      <section id="food-section" class="app-section">
+        <div class="section-title-wrap">
+          <h2 class="section-title"><i class="fa-solid fa-utensils text-gold"></i> Dish Menu</h2>
+          <div class="section-divider"></div>
         </div>
 
-        <!-- Combo 2 Card -->
-        <div class="combo-card">
-          <div class="combo-badge">Combo 2</div>
-          <div class="combo-card-content">
-            <h3 class="combo-title">Japchae & Gimbap Duo</h3>
-            <p class="combo-desc">A delicious, light, and colorful pairing of sesame glass noodles and sliced rice rolls.</p>
-            <div class="combo-items">
-              <div class="combo-item">
-                <span class="bullet"></span>
-                <span>½ order of savory Japchae Noodles</span>
-              </div>
-              <div class="combo-item">
-                <span class="bullet"></span>
-                <span>5 pieces of traditional Gimbap Rolls</span>
-              </div>
-            </div>
-            <div class="combo-footer">
-              <div class="combo-price-tag">
-                <span class="combo-currency">$</span>15<span class="combo-cents">.00</span>
-              </div>
-              <span class="combo-save-label"><i class="fa-solid fa-circle-check"></i> Great Deal</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Drinks Section -->
-  <section class="section drinks-section" id="drinks-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Refreshments</span>
-        <h2 class="section-title">Traditional Korean Drinks</h2>
-        <p class="section-subtitle">Complement your hot and savory dishes with our collection of traditional Korean alcoholic beverages and popular beers.</p>
-      </div>
-
-      <div class="drinks-grid" id="drinksGrid">
-        <!-- JS will render drink cards dynamically or we can list them here -->
-      </div>
-
-      <!-- Legal Disclaimer -->
-      <div class="legal-disclaimer">
-        <div class="disclaimer-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-        <p class="disclaimer-text">Alcoholic beverages available only to guests of legal drinking age. Please enjoy responsibly. ID check is required upon purchase.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ingredients & Allergen Section -->
-  <section class="section ingredients-section" id="ingredients-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Transparency</span>
-        <h2 class="section-title">Ingredients & Allergens</h2>
-        <p class="section-subtitle">We believe in serving fresh, honest food. Here is a guide to the core ingredients used in our dishes. Please let our servers know of any allergies before ordering.</p>
-      </div>
-
-      <div class="ingredients-content">
-        <div class="ingredient-intro-card">
-          <h3>Common Korean Condiments</h3>
-          <p>Our dishes owe their deep, complex flavors to traditional Korean seasonings, including:</p>
-          <ul class="condiment-list">
-            <li><strong>Gochujang (고추장):</strong> Thick, sweet, and spicy fermented red chili paste. Used in Chicken Gangjeong, Tteok-ko-chi, and Bibimbap.</li>
-            <li><strong>Sesame Oil (참기름):</strong> Rich, toasted oil that provides a nutty aroma. Used in Bulgogi, Gimbap, Japchae, and Bibimbap.</li>
-            <li><strong>Garlic & Green Onion (마늘과 파):</strong> The foundation of almost all marinades and seasonings.</li>
-            <li><strong>Fish Sauce (액젓):</strong> Provides savory, umami depths in our Kimchi.</li>
-          </ul>
+        <!-- Food Chips Sub-filters -->
+        <div class="filter-chips">
+          <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="main" aria-pressed="false">Mains</button>
+          <button class="chip" data-filter="snack" aria-pressed="false">Snacks</button>
+          <button class="chip" data-filter="side" aria-pressed="false">Sides</button>
         </div>
 
-        <div class="allergen-alert-card">
-          <div class="allergen-header">
-            <i class="fa-solid fa-circle-info"></i>
-            <h4>Allergen Quick Guide</h4>
+        <!-- Food Cards List Container -->
+        <div class="food-list" id="foodListContainer">
+          <!-- Rendered dynamically by script.js -->
+          <noscript>
+            <div class="noscript-warning">
+              Please enable JavaScript to view the menu, or check below for dishes.
+            </div>
+          </noscript>
+        </div>
+      </section>
+
+      <!-- Combos Section -->
+      <section id="combos-section" class="app-section highlight-section">
+        <div class="section-title-wrap">
+          <h2 class="section-title"><i class="fa-solid fa-fire text-red"></i> Festival Combos</h2>
+          <div class="section-divider"></div>
+        </div>
+        <p class="section-description">Great value combinations to sample multiple street foods.</p>
+
+        <div class="combos-list">
+          <!-- Combo 1 -->
+          <div class="combo-item-card">
+            <div class="combo-header">
+              <span class="combo-badge">Combo 1</span>
+              <span class="combo-price">$15.00</span>
+            </div>
+            <h3 class="combo-name">Bulgogi & Mandoo</h3>
+            <p class="combo-details">½ order of Bulgogi Beef + 3 pcs Mandoo (Dumplings)</p>
           </div>
-          <p>Due to the traditional recipes of Korean cuisine, please note the following allergen references:</p>
-          
-          <div class="allergen-matrix">
-            <div class="allergen-row">
-              <span class="allergen-label">Soy / Gluten</span>
-              <span class="allergen-value">Present in soy sauce used in Bulgogi, Gangjeong, Japchae, Gimbap, Bibimbap, Mandoo, and Tteok-ko-chi.</span>
+
+          <!-- Combo 2 -->
+          <div class="combo-item-card">
+            <div class="combo-header">
+              <span class="combo-badge">Combo 2</span>
+              <span class="combo-price">$15.00</span>
             </div>
-            <div class="allergen-row">
-              <span class="allergen-label">Sesame</span>
-              <span class="allergen-value">Used as oil or garnish seeds on Bulgogi, Gimbap, Japchae, Bibimbap, Mandoo, and Tteok-ko-chi.</span>
-            </div>
-            <div class="allergen-row">
-              <span class="allergen-label">Fish / Seafood</span>
-              <span class="allergen-value">Kimchi contains fish sauce. Mandoo wraps and filling are vegetarian, but check with staff regarding shared preparation.</span>
-            </div>
-            <div class="allergen-row">
-              <span class="allergen-label">Egg</span>
-              <span class="allergen-value">Used in traditional Gimbap filling and optional on Bibimbap.</span>
-            </div>
+            <h3 class="combo-name">Japchae & Gimbap</h3>
+            <p class="combo-details">½ order of Japchae Noodles + 5 pcs Gimbap Rolls</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <h3>Folklorama Korean Pavilion</h3>
-        <p>A celebration of Korean heritage, culture, and cuisine. Join us and experience the rich traditions of South Korea.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#menu-section">Food Menu</a></li>
-          <li><a href="#combos-section">Combos</a></li>
-          <li><a href="#drinks-section">Drinks</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; 2026 Korean Pavilion. Menu items and prices subject to availability.</p>
-        <p class="credits">Built for Folklorama Korean Pavilion. Made with <i class="fa-solid fa-heart"></i> for food lovers.</p>
-      </div>
-    </div>
-  </footer>
+      <!-- Drinks Section -->
+      <section id="drinks-section" class="app-section">
+        <div class="section-title-wrap">
+          <h2 class="section-title"><i class="fa-solid fa-glass-water text-gold"></i> Traditional Drinks</h2>
+          <div class="section-divider"></div>
+        </div>
 
-  <!-- Floating Back to Top Button -->
-  <button id="backToTop" class="back-to-top-btn" aria-label="Scroll back to top" title="Go to top">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
+        <div class="drinks-list" id="drinksListContainer">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+
+        <!-- Alcohol Disclaimer -->
+        <div class="disclaimer-card">
+          <i class="fa-solid fa-circle-exclamation disclaimer-icon"></i>
+          <p class="disclaimer-text">Alcoholic beverages available only to guests of 19+ (legal drinking age in Manitoba). Please enjoy responsibly. Photo ID required.</p>
+        </div>
+      </section>
+
+      <!-- Ingredients & Allergens Section -->
+      <section id="ingredients-section" class="app-section">
+        <div class="section-title-wrap">
+          <h2 class="section-title"><i class="fa-solid fa-leaf text-gold"></i> Ingredients & Safety</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="ingredients-info">
+          <div class="info-card">
+            <h3>Key Korean Seasonings</h3>
+            <p>Dishes contain sesame oil, soy sauce (gluten), garlic, green onion, and fermented red pepper paste (gochujang).</p>
+          </div>
+
+          <div class="allergen-card">
+            <h3>Allergen Quick Guide</h3>
+            <ul class="allergen-list">
+              <li><strong>Gluten / Soy:</strong> In Bulgogi, Gangjeong, Japchae, Gimbap, Bibimbap, Mandoo, and Tteok-ko-chi.</li>
+              <li><strong>Sesame (oil/seeds):</strong> Used in Bulgogi, Gimbap, Japchae, Bibimbap, Mandoo, and Tteok-ko-chi.</li>
+              <li><strong>Fish Sauce:</strong> Present in Kimchi.</li>
+              <li><strong>Egg:</strong> In Gimbap and optional on Bibimbap.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Compact App Footer -->
+    <footer class="app-footer">
+      <p>© 2026 Korean Pavilion. Items & prices subject to availability.</p>
+      <p class="credits">Built for Folklorama Korean Pavilion.</p>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <button id="backToTopBtn" class="app-back-to-top" aria-label="Scroll back to top">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+  </div>
 
   <!-- Main JavaScript File -->
   <script src="script.js"></script>
