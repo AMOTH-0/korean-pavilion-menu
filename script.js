@@ -31,15 +31,25 @@ const foodItems = [
     image: "assets/images/chicken_gangjeong.png"
   },
   {
-    id: "bibimbap",
+    id: "bibimbap-veg",
     name: "Bibimbap (Vegetable)",
     price: 18.00,
-    extraPrice: "Beef option: $20.00",
     category: "meals",
     shortDesc: "Rice bowl with assorted seasoned vegetables & egg.",
     ingredients: "Rice, Carrot, Spinach, Mushroom, Hot Pepper Sauce, Sesame Oil, Garlic Powder, Salt, Soy Sauce, Sugar, Black Pepper",
     tag: "Healthy",
     isPopular: true,
+    image: "assets/images/bibimbap.png"
+  },
+  {
+    id: "bibimbap-beef",
+    name: "Bibimbap (Beef)",
+    price: 20.00,
+    category: "meals",
+    shortDesc: "Rice bowl with beef, assorted seasoned vegetables & egg.",
+    ingredients: "Rice, Beef, Carrot, Spinach, Mushroom, Hot Pepper Sauce, Sesame Oil, Garlic Powder, Salt, Soy Sauce, Sugar, Black Pepper",
+    tag: "Popular",
+    isPopular: false,
     image: "assets/images/bibimbap.png"
   },
   {
@@ -67,13 +77,24 @@ const foodItems = [
   {
     id: "tteokkochi",
     name: "Tteok-ko-chi",
-    price: 6.00,
+    price: 6.99,
     category: "snacks",
     shortDesc: "Fried skewered rice cakes with sweet chili sauce.",
     ingredients: "Rice Cake, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
     tag: "Street Skewer",
     isPopular: false,
     image: "assets/images/tteokkochi.png"
+  },
+  {
+    id: "sso-tteok",
+    name: "Sso-tteok (쏘떡쏘떡)",
+    price: 7.99,
+    category: "snacks",
+    shortDesc: "Korean skewer with sausage and rice cake.",
+    ingredients: "Rice Cake, Sausage, Hot Pepper Sauce, Onion, Salt, Garlic Powder, Soy Sauce, Sugar or Syrup, Ketchup",
+    tag: "New Skewer",
+    isPopular: false,
+    image: "assets/images/sso_tteok.png"
   },
   {
     id: "mandoo",
@@ -90,7 +111,7 @@ const foodItems = [
     id: "kimchi",
     name: "Kimchi (500g)",
     price: 7.99,
-    extraPrice: "1kg pack: $12.99",
+    extraPrice: "1kg size: $12.99",
     category: "sides",
     shortDesc: "Traditional fermented spicy cabbage side.",
     ingredients: "Napa Cabbage, Green Onion, Onion, Sugar, Salt, Chili Powder, Garlic Powder, Fish Sauce",
@@ -116,8 +137,8 @@ const drinkItems = [
     description: "South Korea's top crisp lager.",
     icon: "fa-solid fa-beer-mug-empty",
     options: [
-      { serving: "Can (500ml)", price: 8.99 },
-      { serving: "Bottle (330ml)", price: 6.99 }
+      { serving: "Large", price: 11.99 },
+      { serving: "Small (355ml)", price: 7.99 }
     ]
   },
   {
