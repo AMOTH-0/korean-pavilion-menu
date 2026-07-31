@@ -76,7 +76,7 @@ const foodItems = [
   },
   {
     id: "tteokkochi",
-    name: "Tteok-ko-chi",
+    name: "Tteok-ko-chi (1 pc)",
     price: 6.99,
     category: "snacks",
     shortDesc: "Fried skewered rice cakes with sweet chili sauce.",
@@ -87,7 +87,7 @@ const foodItems = [
   },
   {
     id: "sso-tteok",
-    name: "Sso-tteok (쏘떡쏘떡)",
+    name: "Sso-tteok (1 pc) (쏘떡쏘떡)",
     price: 7.99,
     category: "snacks",
     shortDesc: "Korean skewer with sausage and rice cake.",
@@ -98,7 +98,7 @@ const foodItems = [
   },
   {
     id: "mandoo",
-    name: "Mandoo (5 pcs)",
+    name: "Mandoo (8 pcs)",
     price: 10.00,
     category: "snacks",
     shortDesc: "Crispy pan-fried vegetable & noodle dumplings.",
@@ -192,16 +192,7 @@ function createFoodCardHtml(item, isPopularList = false) {
   `;
 }
 
-/**
- * Renders Popular Picks tray
- */
-function renderPopularPicks() {
-  const popularGrid = document.getElementById("popularGrid");
-  if (!popularGrid) return;
-  
-  const populars = foodItems.filter(item => item.isPopular);
-  popularGrid.innerHTML = populars.map(item => createFoodCardHtml(item, true)).join("");
-}
+
 
 /**
  * Renders categorical food sections (Meals, Snacks, Sides)
@@ -366,7 +357,6 @@ document.querySelectorAll(".bottom-nav-item, .pill-link").forEach((link) => {
 // DOM LOADING
 // ==========================================================================
 function initMenuApp() {
-  renderPopularPicks();
   renderFoodLists();
   renderDrinks();
 }
