@@ -137,8 +137,7 @@ const drinkItems = [
     description: "South Korea's top crisp lager.",
     icon: "fa-solid fa-beer-mug-empty",
     options: [
-      { serving: "Large", price: 11.99 },
-      { serving: "Small (355ml)", price: 7.99 }
+      { serving: "Large", price: 11.99 }
     ]
   },
   {
